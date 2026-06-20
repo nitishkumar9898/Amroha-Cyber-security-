@@ -1,0 +1,141 @@
+.finguard-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.fg-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.fg-header h1 {
+  font-size: 2.5rem;
+  color: #fca311; /* Gold/Orange theme for Finance/Tracing */
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.fg-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.fg-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.fg-form-group {
+  margin-bottom: 1rem;
+}
+
+.fg-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.fg-form-group input,
+.fg-form-group select,
+.fg-form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.fg-form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.fg-form-group textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.fg-btn {
+  background: #fca311;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.fg-btn:hover {
+  background: #ffb703;
+}
+
+.fg-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.fg-alert {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Specific component styling */
+.fg-result-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #111;
+  text-align: left;
+}
+
+.fg-result-box.danger {
+  border-left: 4px solid #ff4444;
+}
+
+.fg-result-box.warning {
+  border-left: 4px solid #fca311;
+}
+
+.fg-result-box.nominal {
+  border-left: 4px solid #00ffcc;
+}
+
+.fg-result-box.info {
+  border-left: 4px solid #4facfe;
+}
+
+.fg-result-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}

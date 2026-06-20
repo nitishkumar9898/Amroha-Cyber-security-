@@ -1,0 +1,131 @@
+.globaljurix-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.gj-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.gj-header h1 {
+  font-size: 2.5rem;
+  color: #ffaa00; /* Amber/Gold for Law & Order */
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.gj-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.gj-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.gj-form-group {
+  margin-bottom: 1rem;
+}
+
+.gj-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.gj-form-group input,
+.gj-form-group select,
+.gj-form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.gj-btn {
+  background: #ffaa00;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.gj-btn:hover {
+  background: #ffcc33;
+}
+
+.gj-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.gj-alert {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Specific component styling */
+.gj-result-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #111;
+  text-align: left;
+}
+
+.gj-result-box.danger {
+  border-left: 4px solid #ff4444;
+}
+
+.gj-result-box.warning {
+  border-left: 4px solid #ffaa00;
+}
+
+.gj-result-box.nominal {
+  border-left: 4px solid #00ffcc;
+}
+
+.gj-result-box.info {
+  border-left: 4px solid #4facfe;
+}
+
+.gj-result-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}

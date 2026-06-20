@@ -1,0 +1,69 @@
+.po-container {
+  padding: 2rem;
+  color: #ff33cc;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.po-card {
+  background: rgba(255, 51, 204, 0.05);
+  border: 1px solid #ff33cc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.po-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ff33cc;
+  padding-bottom: 0.5rem;
+}
+
+.po-card input {
+  background: transparent;
+  border: 1px solid #ff33cc;
+  color: #ff33cc;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.po-card button {
+  background: #ff33cc;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.po-strategy {
+  background: rgba(255, 51, 204, 0.15);
+  border-left: 4px solid #ff33cc;
+}
+
+.counter-btn {
+  background: #ff33cc;
+  color: #121212;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 51, 204, 0.2);
+}
+
+th {
+  color: #fff;
+}

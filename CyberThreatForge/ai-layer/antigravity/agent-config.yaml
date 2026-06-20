@@ -1,0 +1,417 @@
+# =============================================================================
+# Google Antigravity Agent Configuration — CyberThreatForge
+# =============================================================================
+#
+# Defines the multi-agent swarm for autonomous cybersecurity investigation.
+# Each agent is a specialized Antigravity agent with domain-specific
+# capabilities, tools, and model configurations.
+#
+# Antigravity platform manages:
+#   - Agent lifecycle (creation, monitoring, scaling)
+#   - Inter-agent communication and coordination
+#   - Workload distribution and concurrency control
+#   - Model routing and GPU scheduling
+#   - State persistence and recovery
+#
+# Reference: https://antigravity.google.com/agents (2026)
+
+antigravity:
+  project: cyberthreatforge
+  region: asia-south1
+  environment: production
+  version: "2.0.0"
+
+# ─── Agent Registry ──────────────────────────────────────────────────────────
+
+agents:
+
+  # ── Orchestrator Agents ──────────────────────────────────────────────────
+
+  - id: sentinel-orchestrator
+    name: Sentinel Orchestrator
+    description: "Meta-agent that decomposes investigation requests into sub-tasks and routes to specialized agents. Monitors execution, handles errors, and consolidates results."
+    type: orchestrator
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.1
+      max_tokens: 8192
+    tools:
+      - decompose_task
+      - route_to_agent
+      - consolidate_results
+      - invoke_pipeline
+    max_concurrency: 50
+    timeout_seconds: 300
+    retry_policy:
+      max_retries: 3
+      backoff: exponential
+      initial_delay: 1.0
+
+  - id: investigation-planner
+    name: Investigation Planner
+    description: "Designs optimal multi-agent investigation pipelines based on evidence metadata, case context, and available agent capabilities."
+    type: planner
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.2
+    tools:
+      - query_agent_registry
+      - query_capability_index
+      - generate_pipeline_dag
+      - estimate_compute_budget
+    max_concurrency: 20
+
+  # ── Analysis Agents ──────────────────────────────────────────────────────
+
+  - id: evidence-classifier
+    name: Evidence Classifier
+    description: "Classifies evidence type (disk image, memory dump, network capture, malware, document, media), severity (CRITICAL/HIGH/MEDIUM/LOW), and recommends analysis pipeline."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-flash
+      temperature: 0.1
+    tools:
+      - analyze_file_header
+      - check_magic_bytes
+      - classify_evidence_type
+      - score_severity
+    input_modalities: [text, binary]
+    output_modalities: [text]
+    max_concurrency: 50
+    timeout_seconds: 30
+
+  - id: malware-analyzer
+    name: Malware Analyzer
+    description: "Full malware analysis pipeline: static (PE/ELF/MachO parsing, YARA), dynamic (sandbox execution), behavioral (CAPA rules), MITRE ATT&CK mapping, family classification."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-flash
+      temperature: 0.2
+    tools:
+      - parse_pe_header
+      - scan_yara_rules
+      - run_capa_analysis
+      - submit_to_sandbox
+      - map_to_mitre_attack
+      - classify_malware_family
+      - extract_iocs
+    required_capabilities: [malware_analysis, static_analysis, yara_scanning]
+    input_modalities: [binary]
+    output_modalities: [text]
+    max_concurrency: 10
+    timeout_seconds: 300
+
+  - id: deepfake-detector
+    name: Deepfake Detector
+    description: "Multi-modal media forensics: GAN fingerprint extraction (MesoNet/XceptionNet), audio spectrogram analysis, video temporal coherence, EXIF/provenance verification (C2PA)."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro-vision
+      temperature: 0.1
+    tools:
+      - extract_gan_fingerprint
+      - analyze_spectrogram
+      - check_temporal_coherence
+      - verify_exif
+      - check_c2pa_provenance
+      - detect_face_morph
+    required_capabilities: [deepfake_detection, media_forensics]
+    input_modalities: [image, video, audio]
+    output_modalities: [text]
+    max_concurrency: 8
+    timeout_seconds: 120
+
+  - id: mobile-forensic-expert
+    name: Mobile Forensic Expert
+    description: "Android/iOS device extraction, app data analysis (WhatsApp, Telegram, Signal), cloud extraction, deleted data recovery, location timeline reconstruction."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-flash
+      temperature: 0.1
+    tools:
+      - extract_android_device
+      - extract_ios_device
+      - parse_whatsapp_db
+      - parse_telegram_db
+      - parse_signal_db
+      - recover_deleted_data
+      - build_location_timeline
+    required_capabilities: [mobile_forensics, app_analysis]
+    input_modalities: [text, binary]
+    output_modalities: [text]
+    max_concurrency: 5
+    timeout_seconds: 600
+
+  # ── Intelligence Agents ──────────────────────────────────────────────────
+
+  - id: apt-hunter
+    name: APT Hunter
+    description: "Advanced Persistent Threat attribution: TTP fingerprinting (MITRE ATT&CK v15+), infrastructure graph correlation, temporal pattern mining, cross-campaign linkage, geolocation spoofing detection."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.3
+    tools:
+      - fingerprint_ttps
+      - trace_infrastructure
+      - query_neo4j_graph
+      - analyze_temporal_patterns
+      - link_campaigns
+      - detect_geo_spoofing
+      - query_threat_feeds
+    required_capabilities: [apt_hunting, attribution, threat_intel]
+    input_modalities: [text, network]
+    output_modalities: [text]
+    max_concurrency: 5
+    timeout_seconds: 300
+
+  - id: darkweb-monitor
+    name: Dark Web Monitor
+    description: "TOR/I2P hidden service crawling, breach monitoring, marketplace scraping, ransomware leak site tracking, credential monitoring. All traffic via TOR SOCKS5 proxy."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-flash
+      temperature: 0.2
+    tools:
+      - crawl_tor_hidden_service
+      - monitor_paste_sites
+      - scrape_marketplace
+      - track_ransomware_leaks
+      - monitor_telegram_channels
+      - search_breach_databases
+    tools_config:
+      proxy: socks5h://tor-proxy:9050
+      rate_limit: 10 # requests per minute per source
+      javascript_disabled: true
+    required_capabilities: [darkweb_intel, tor_crawling, breach_monitoring]
+    input_modalities: [text]
+    output_modalities: [text]
+    max_concurrency: 3
+    timeout_seconds: 600
+
+  - id: threat-predictor
+    name: Threat Predictor
+    description: "Predictive analytics: attack forecasting (Prophet+LSTM), actor next-move prediction, vulnerability exploitation probability, geographic risk heatmaps, SOC resource optimization (RL)."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.4
+    tools:
+      - forecast_attacks
+      - predict_actor_next_move
+      - compute_vuln_exploitation_prob
+      - generate_risk_heatmap
+      - optimize_resource_allocation
+    required_capabilities: [predictive_analytics, forecasting]
+    input_modalities: [text]
+    output_modalities: [text]
+    max_concurrency: 5
+    timeout_seconds: 120
+
+  # ── Specialized Agents ───────────────────────────────────────────────────
+
+  - id: cyber-psychologist
+    name: Cyber Psychologist
+    description: "Threat actor psychological profiling, behavioral analysis, linguistic fingerprinting, radicalization detection, deception analysis."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.3
+    tools:
+      - analyze_linguistic_patterns
+      - profile_actor_psychology
+      - detect_deception
+      - analyze_motivation
+      - assess_radicalization_risk
+    required_capabilities: [cyber_psychology, behavioral_analysis]
+    input_modalities: [text]
+    output_modalities: [text]
+    max_concurrency: 5
+    timeout_seconds: 120
+
+  - id: legal-compliance-officer
+    name: Legal Compliance Officer
+    description: "Ensures all investigation steps comply with IT Act 2000, DPDP Act 2023, Indian Evidence Act 1872 (Section 65B). Generates court-admissible certificates."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.1
+    tools:
+      - check_it_act_compliance
+      - check_dpdp_act_compliance
+      - generate_section_65b_certificate
+      - verify_chain_of_custody
+      - assess_data_classification
+    required_capabilities: [legal_compliance, reporting]
+    input_modalities: [text]
+    output_modalities: [text]
+    max_concurrency: 10
+    timeout_seconds: 60
+
+  - id: ethics-guardian
+    name: Ethics Guardian
+    description: "Bias detection across protected attributes (caste, religion, gender, region), privacy leak scanning (Aadhaar/PAN/email/phone), fairness auditing, human-review threshold enforcement."
+    type: guardian
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.1
+    tools:
+      - detect_bias
+      - scan_pii
+      - audit_fairness
+      - check_human_review_required
+      - generate_ethics_report
+    required_capabilities: [ai_governance, ethics, bias_detection]
+    input_modalities: [text, multi]
+    output_modalities: [text]
+    max_concurrency: 20
+    timeout_seconds: 30
+    priority: highest  # Always run, cannot be skipped
+
+  # ── Reporting Agents ─────────────────────────────────────────────────────
+
+  - id: report-generator
+    name: Report Generator
+    description: "Generates comprehensive investigation reports: case summary, evidence inventory, chain of custody, analysis findings, attribution, Section 65B certificate, expert opinion."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro
+      temperature: 0.2
+    tools:
+      - generate_case_summary
+      - compile_evidence_inventory
+      - render_chain_of_custody
+      - format_analysis_findings
+      - generate_section_65b
+      - export_pdf
+    required_capabilities: [reporting, legal_formatting]
+    input_modalities: [text]
+    output_modalities: [text]
+    max_concurrency: 10
+    timeout_seconds: 120
+
+  - id: visualization-renderer
+    name: Visualization Renderer
+    description: "Generates interactive visualizations: Neo4j evidence graph, investigation timeline (Gantt), geographic heatmap, MITRE ATT&CK coverage matrix, chain of custody flow diagram."
+    type: worker
+    model:
+      provider: vertex-ai
+      model: gemini-2.0-pro-vision
+      temperature: 0.2
+    tools:
+      - render_neo4j_graph
+      - render_timeline
+      - render_heatmap
+      - render_mitre_matrix
+      - render_custody_flow
+    required_capabilities: [visualization, graph_rendering]
+    input_modalities: [text]
+    output_modalities: [image, text]
+    max_concurrency: 5
+    timeout_seconds: 60
+
+# ─── Inter-Agent Communication ───────────────────────────────────────────────
+
+communication:
+  protocol: grpc
+  encoding: protobuf
+  encryption: mtls
+  discovery: kubernetes_dns
+
+  # Default routing: all outputs go to orchestrator for consolidation
+  routing:
+    default_target: sentinel-orchestrator
+    parallel_groups:
+      - group: analysis
+        agents: [evidence-classifier, malware-analyzer, deepfake-detector, mobile-forensic-expert]
+        mode: parallel  # All run simultaneously
+      - group: intelligence
+        agents: [apt-hunter, darkweb-monitor, cyber-psychologist]
+        mode: parallel
+      - group: final
+        agents: [report-generator, visualization-renderer, legal-compliance-officer]
+        mode: sequential  # Run after analysis + intelligence complete
+
+# ─── Resource Allocation ────────────────────────────────────────────────────
+
+resources:
+  default:
+    cpu: "2"
+    memory: "4Gi"
+    timeout_seconds: 300
+
+  overrides:
+    - agent: mobile-forensic-expert
+      cpu: "4"
+      memory: "8Gi"
+      timeout_seconds: 600
+      gpu:
+        type: nvidia-l4
+        count: 1
+    - agent: deepfake-detector
+      cpu: "4"
+      memory: "8Gi"
+      timeout_seconds: 120
+      gpu:
+        type: nvidia-l4
+        count: 1
+    - agent: malware-analyzer
+      cpu: "4"
+      memory: "16Gi"
+      timeout_seconds: 300
+      storage:
+        size: "100Gi"  # For sandbox VMs
+    - agent: darkweb-monitor
+      cpu: "2"
+      memory: "4Gi"
+      network:
+        proxy: tor
+        bandwidth: "10mbps"
+
+# ─── Continual Learning ─────────────────────────────────────────────────────
+
+learning:
+  enabled: true
+  strategy: continual
+  techniques:
+    - elastic_weight_consolidation
+    - progressive_neural_networks
+    - memory_replay
+    - lora_adapters
+  feedback_loop:
+    source: human_review
+    integration: sentinel_core_feedback_api
+  evaluation:
+    frequency: every_training_run
+    metrics: [accuracy, f1_score, precision, recall, latency_p99]
+    regression_threshold: 0.03
+
+# ─── Observability ───────────────────────────────────────────────────────────
+
+observability:
+  tracing: open telemetry
+  metrics: prometheus
+  logging:
+    level: info
+    include_agent_decisions: true
+    include_model_outputs: false  # Privacy — don't log actual evidence
+  alerts:
+    - condition: agent_error_rate > 0.1
+      severity: warning
+    - condition: pipeline_latency_p99 > 300s
+      severity: critical
+    - condition: ethics_fail_rate > 0.05
+      severity: critical

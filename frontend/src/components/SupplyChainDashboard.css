@@ -1,0 +1,53 @@
+/* frontend/src/components/SupplyChainDashboard.css */
+.supplychain-dashboard {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+  color: #f0f0f0;
+  font-family: "Inter", sans-serif;
+}
+
+.dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3a86ff, #ff006e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.upload-section {
+  margin-bottom: 1.5rem;
+}
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(45deg, #ff7b72, #ff006e);
+  border-radius: 8px;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+.upload-label:hover {
+  transform: translateY(-2px);
+}
+.upload-label input { display: none; }
+
+.loading { font-style: italic; color: #ff7b72; }
+
+.graph-section {
+  margin-top: 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: auto;
+}
+.graph-json {
+  white-space: pre-wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+}

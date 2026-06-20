@@ -1,0 +1,167 @@
+.ethicsforge-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.ef-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.ef-header h1 {
+  font-size: 2.5rem;
+  color: #ffaa00; /* Ethical gold/amber theme */
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ef-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ef-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.ef-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.ef-form-group {
+  margin-bottom: 1rem;
+}
+
+.ef-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.ef-form-group input,
+.ef-form-group select,
+.ef-form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.ef-btn {
+  background: #ffaa00;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.ef-btn:hover {
+  background: #ffc233;
+}
+
+.ef-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.ef-alert {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Policy Cards */
+.ef-policy-card {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #555;
+}
+
+.ef-policy-card.critical {
+  border-left-color: #ff4444;
+}
+
+.ef-policy-card.warning {
+  border-left-color: #ffaa00;
+}
+
+.ef-policy-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.ef-policy-badge.critical { background: rgba(255, 68, 68, 0.2); color: #ff4444; }
+.ef-policy-badge.warning { background: rgba(255, 170, 0, 0.2); color: #ffaa00; }
+
+/* Audit Logs */
+.ef-audit-log {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px dashed var(--border-color);
+}
+
+.ef-decision {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.ef-decision.vetoed { color: #ff4444; }
+.ef-decision.approved { color: #00ff88; }
+.ef-decision.warning { color: #ffaa00; }
+
+.ef-xai-box {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: #111;
+  border-left: 3px solid #00ccff;
+  font-family: monospace;
+  color: #ccc;
+  white-space: pre-wrap;
+}
+
+/* Bias Scan */
+.ef-bias-score {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.ef-bias-score.high { color: #ff4444; }
+.ef-bias-score.low { color: #00ff88; }

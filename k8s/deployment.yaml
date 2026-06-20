@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctf-gateway
+  labels:
+    app: ctf-gateway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ctf-gateway
+  template:
+    metadata:
+      labels:
+        app: ctf-gateway
+    spec:
+      containers:
+      - name: gateway
+        image: cyberthreatforge/gateway:v2
+        ports:
+        - containerPort: 8000
+        env:
+        - name: QUANTUM_SAFE_MODE
+          value: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctf-sentinel-core
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ctf-sentinel
+  template:
+    metadata:
+      labels:
+        app: ctf-sentinel
+    spec:
+      containers:
+      - name: sentinel
+        image: cyberthreatforge/ai_layer:v2
+        ports:
+        - containerPort: 8001
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctf-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ctf-frontend
+  template:
+    metadata:
+      labels:
+        app: ctf-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: cyberthreatforge/frontend:v2
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctf-malware-sandbox
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ctf-sandbox
+  template:
+    metadata:
+      labels:
+        app: ctf-sandbox
+    spec:
+      containers:
+      - name: sandbox
+        image: cyberthreatforge/sandbox:v2
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"

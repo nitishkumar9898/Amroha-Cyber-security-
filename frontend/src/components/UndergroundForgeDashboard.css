@@ -1,0 +1,66 @@
+.ug-container {
+  padding: 2rem;
+  color: #a800ff;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.ug-card {
+  background: rgba(168, 0, 255, 0.05);
+  border: 1px solid #a800ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ug-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #a800ff;
+  padding-bottom: 0.5rem;
+}
+
+.ug-card input {
+  background: transparent;
+  border: 1px solid #a800ff;
+  color: #a800ff;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.ug-card button {
+  background: #a800ff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ug-card button:disabled {
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.high-threat {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(168, 0, 255, 0.2);
+}
+
+th {
+  color: #fff;
+}

@@ -1,0 +1,224 @@
+{
+  "frameworkName": "CyberThreatForge Ethical AI & Legal Compliance Framework",
+  "version": "2.0.0",
+  "lastUpdated": "2026-06-20",
+
+  "governingPrinciples": [
+    "Human-centric AI — decisions augment, never replace human judgment",
+    "Presumption of innocence — AI findings are leads, not guilt",
+    "Proportionality — data collection and analysis scaled to threat severity",
+    "Transparency — all AI decisions shall be explainable (XAI)",
+    "Accountability — every action traceable to a human + system entity",
+    "Non-discrimination — algorithms tested for bias across caste, religion, gender, region",
+    "Data minimization — collect only what is necessary (DPDP Act Sec 4-6)",
+    "Privacy by design — PII masking, differential privacy, consent management",
+    "Right to explanation — subjects can request AI logic disclosure",
+    "Continuous audit — algorithmic fairness monitored in real-time"
+  ],
+
+  "complianceFrameworks": {
+    "india": {
+      "itAct": {
+        "name": "Information Technology Act, 2000",
+        "sections": [
+          "Section 3: Digital signatures (Dilithium-compatible)",
+          "Section 43: Penalty for unauthorized access",
+          "Section 65: Tampering with computer source documents",
+          "Section 66B: Receiving stolen computer resource",
+          "Section 67B: Child pornography (AI detection)",
+          "Section 69: Decryption direction",
+          "Section 79: Intermediary liability"
+        ],
+        "complianceMechanism": "Immutable audit logs, HMAC chain-of-custody, Dilithium signatures"
+      },
+      "dpdpAct": {
+        "name": "Digital Personal Data Protection Act, 2023",
+        "sections": [
+          "Sec 4-6: Data minimization and purpose limitation",
+          "Sec 7: Consent management",
+          "Sec 8: Deemed consent for legal proceedings",
+          "Sec 9: Consent of parent for children",
+          "Sec 10-11: Rights of data principal",
+          "Sec 12-13: Obligations of data fiduciary",
+          "Sec 16-17: Data protection impact assessment"
+        ],
+        "complianceMechanism": "Consent receipts, PIIA (Privacy Impact Assessment) automation, DPDP dashboard"
+      },
+      "evidenceAct": {
+        "name": "Indian Evidence Act, 1872",
+        "sections": [
+          "Section 65A: Electronic records as evidence",
+          "Section 65B: Admissibility of electronic records (certificate required)"
+        ],
+        "complianceMechanism": "Automated Section 65B certificate generation with hash verification"
+      },
+      "bnss": {
+        "name": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "relevantSections": [
+          "Search and seizure of electronic evidence",
+          "Forensic examination procedures",
+          "Cyber crime investigation protocols"
+        ]
+      }
+    },
+    "global": {
+      "gdpr": { "status": "mapped", "keyArticles": [5, 17, 22, 35] },
+      "iso27001": { "status": "certification_ready", "controls": ["A.8", "A.9", "A.10", "A.12", "A.14"] },
+      "nist80053": { "status": "mapped", "families": ["AC", "AU", "IA", "SC", "SI"] },
+      "mitreAttack": { "status": "integrated", "version": "v15" },
+      "stix21": { "status": "supported", "format": "JSON" }
+    }
+  },
+
+  "algorithmicFairness": {
+    "biasTestingProtocol": {
+      "frequency": "pre_deployment + quarterly",
+      "metrics": [
+        "demographic_parity",
+        "equalized_odds",
+        "predictive_parity",
+        "false_positive_rate_parity",
+        "false_negative_rate_parity"
+      ],
+      "protectedAttributes": ["caste", "religion", "gender", "region", "socioeconomic_status"],
+      "threshold": {
+        "disparate_impact_ratio": { "min": 0.8, "max": 1.25 },
+        "statistical_parity_difference": { "max": 0.1 }
+      },
+      "remediation": [
+        "Re-sample training data",
+        "Apply adversarial debiasing",
+        "Threshold adjustment per group",
+        "Model architecture modification"
+      ]
+    },
+    "explainabilityRequirements": {
+      "minimumFidelity": 0.85,
+      "methods": [
+        "SHAP (SHapley Additive exPlanations)",
+        "LIME (Local Interpretable Model-agnostic Explanations)",
+        "Attention visualization (transformer models)",
+        "Counterfactual explanations",
+        "Rule-based approximations (decision trees)"
+      ],
+      "stakeholderLevels": {
+        "investigator": "Natural language explanation of each finding",
+        "legal_advisor": "Technical explanation + evidence chain",
+        "court": "Section 65B certificate + expert affidavit",
+        "system_admin": "Full gradient-level model internals"
+      }
+    }
+  },
+
+  "humanOversightRequirements": {
+    "criticalDecisions": {
+      "types": [
+        "Arrest recommendation",
+        "Search warrant targeting",
+        "High-confidence APT attribution",
+        "National security threat scoring",
+        "Predictive policing deployment"
+      ],
+      "requiredApproval": "human_in_loop",
+      "minimumReviewers": 2,
+      "coolingOffPeriod_minutes": 15
+    },
+    "highImpactDecisions": {
+      "types": [
+        "Evidence classification (CRITICAL/HIGH)",
+        "Case severity escalation",
+        "Cross-jurisdiction data sharing",
+        "Dark web surveillance targeting"
+      ],
+      "requiredApproval": "human_on_loop",
+      "autoExecuteAfter_minutes": 30
+    },
+    "lowImpactDecisions": {
+      "types": [
+        "Routine IOC ingestion",
+        "Threat feed polling",
+        "Evidence hash verification",
+        "Log correlation"
+      ],
+      "requiredApproval": "full_automation"
+    }
+  },
+
+  "rightToExplanation": {
+    "process": {
+      "submission": "Via portal or judicial order",
+      "responseTime": "72 hours (legal), 24 hours (national security)",
+      "contents": [
+        "AI model used (version, training date, accuracy metrics)",
+        "Key input features that influenced decision",
+        "Confidence score and uncertainty range",
+        "Alternative decisions and their probabilities",
+        "Human reviewer history",
+        "Appeal procedure"
+      ],
+      "exemptions": [
+        "Ongoing investigation confidentiality",
+        "National security classification",
+        "Source protection (TTP intelligence)"
+      ]
+    }
+  },
+
+  "dataGovernance": {
+    "classificationLevels": {
+      "CRITICAL": {
+        "retentionDays": 2555,
+        "accessRequired": "dual_approval",
+        "encryptionStandard": "quantum_safe_hybrid",
+        "auditFrequency": "real_time"
+      },
+      "HIGH": {
+        "retentionDays": 1825,
+        "accessRequired": "single_approval",
+        "encryptionStandard": "aes256_gcm",
+        "auditFrequency": "hourly"
+      },
+      "MEDIUM": {
+        "retentionDays": 1095,
+        "accessRequired": "role_based",
+        "encryptionStandard": "aes256",
+        "auditFrequency": "daily"
+      },
+      "LOW": {
+        "retentionDays": 730,
+        "accessRequired": "authenticated",
+        "encryptionStandard": "tls_1_3",
+        "auditFrequency": "weekly"
+      }
+    },
+    "rightToErasure": {
+      "procedure": "Automated lifecycle manager with 30-day grace period",
+      "exceptions": [
+        "Court-ordered retention",
+        "Ongoing investigation",
+        "Public interest archival"
+      ]
+    }
+  },
+
+  "platformEthicsBoard": {
+    "composition": [
+      "Chief Ethics Officer (Chair)",
+      "Legal Counsel (IT Act specialist)",
+      "Data Protection Officer",
+      "Independent AI Ethicist",
+      "Civil Liberties Representative",
+      "Law Enforcement Liaison",
+      "Technical Architect"
+    ],
+    "responsibilities": [
+      "Review algorithm fairness reports",
+      "Approve new AI capabilities",
+      "Hear appeals on AI decisions",
+      "Annual ethical audit",
+      "Public transparency report",
+      "Emergency override authorization"
+    ],
+    "meetingFrequency": "monthly (regular) + as-needed (emergency)"
+  }
+}

@@ -1,0 +1,75 @@
+.scg-container {
+  padding: 2rem;
+  color: #00ff66;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.scg-card {
+  background: rgba(0, 255, 102, 0.05);
+  border: 1px solid #00ff66;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.scg-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #00ff66;
+  padding-bottom: 0.5rem;
+}
+
+.scg-card input {
+  background: transparent;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.scg-card button {
+  background: #00ff66;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.critical-score {
+  color: #ff3333;
+  font-weight: bold;
+}
+
+.isolate-btn {
+  background: #ff3333;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.isolate-btn:disabled {
+  background: #555;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+}
+
+th {
+  color: #fff;
+}

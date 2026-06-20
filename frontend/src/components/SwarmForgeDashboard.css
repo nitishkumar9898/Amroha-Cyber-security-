@@ -1,0 +1,169 @@
+.swarmforge-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.sf-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.sf-header h1 {
+  font-size: 2.5rem;
+  color: #ff3366; /* Aggressive swarm red/pink */
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sf-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.sf-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.sf-form-group {
+  margin-bottom: 1rem;
+}
+
+.sf-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.sf-form-group input,
+.sf-form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.sf-btn {
+  background: #ff3366;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.sf-btn:hover {
+  background: #ff5580;
+}
+
+.sf-btn.defend {
+  background: #00ccff;
+  color: #000;
+}
+
+.sf-btn.defend:hover {
+  background: #33d6ff;
+}
+
+.sf-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.sf-alert {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Specific component styling */
+.sf-telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.sf-metric-box {
+  background: #111;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.sf-metric-label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.sf-metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff3366;
+}
+
+.sf-pivot-box {
+  grid-column: span 2;
+  background: rgba(255, 170, 0, 0.1);
+  border: 1px solid rgba(255, 170, 0, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sf-pivot-target {
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #ffaa00;
+  margin-top: 0.5rem;
+}
+
+.sf-neutral-result {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sf-neutral-percent {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00ff88;
+  margin-bottom: 0.5rem;
+}

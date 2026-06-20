@@ -1,0 +1,77 @@
+.lf-container {
+  padding: 2rem;
+  color: #ff00ff;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lf-card {
+  background: rgba(255, 0, 255, 0.05);
+  border: 1px solid #ff00ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lf-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ff00ff;
+  padding-bottom: 0.5rem;
+}
+
+.lf-card input, .lf-card textarea {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #ff00ff;
+  color: #ff00ff;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.lf-card button {
+  background: #ff00ff;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.lf-success {
+  background: rgba(255, 0, 255, 0.15);
+  border-left: 4px solid #ff00ff;
+}
+
+.graph-btn {
+  background: #ff00ff;
+  color: #121212;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.graph-btn:disabled {
+  background: #555;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+}
+
+th {
+  color: #fff;
+}

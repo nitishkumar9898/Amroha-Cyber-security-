@@ -1,0 +1,21 @@
+.btf-chart {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+.btf-chart-label {
+  min-width: 8rem;
+}
+
+.btf-chart-svg {
+  width: 200px;
+  height: 10px;
+}
+
+.btf-chart-perc {
+  min-width: 3rem;
+  text-align: right;
+}

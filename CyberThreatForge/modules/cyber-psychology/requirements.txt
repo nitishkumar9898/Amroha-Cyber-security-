@@ -1,0 +1,7 @@
+# Cyber Psychology Behavioral Profiler dependencies
+# Core dependencies are in modules/requirements-shared.txt and modules/requirements-ml.txt
+# Module-specific additions:
+scipy==1.14.0
+numpy==1.26.0
+torch==2.4.0
+transformers==4.45.0

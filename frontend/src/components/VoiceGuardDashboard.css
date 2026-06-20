@@ -1,0 +1,66 @@
+.vg-container {
+  padding: 2rem;
+  color: #33ccff;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.vg-card {
+  background: rgba(51, 204, 255, 0.05);
+  border: 1px solid #33ccff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.vg-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #33ccff;
+  padding-bottom: 0.5rem;
+}
+
+.vg-card input {
+  background: transparent;
+  border: 1px solid #33ccff;
+  color: #33ccff;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.vg-card button {
+  background: #33ccff;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.vg-card button:disabled {
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.high-prob {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(51, 204, 255, 0.2);
+}
+
+th {
+  color: #fff;
+}

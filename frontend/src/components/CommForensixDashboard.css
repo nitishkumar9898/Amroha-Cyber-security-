@@ -1,0 +1,33 @@
+/* CommForensix Dashboard styling – matches dark theme */
+.commforensix-dashboard {
+  padding: 20px;
+  color: #e0e0e0;
+  background-color: #111;
+}
+.commforensix-dashboard h2 {
+  color: #00ffff;
+  margin-bottom: 20px;
+}
+.upload-form button {
+  background: #00bfff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.upload-form button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+.section {
+  margin-top: 20px;
+  background: #222;
+  padding: 15px;
+  border-radius: 4px;
+}
+.error {
+  color: #ff5555;
+  margin-top: 10px;
+}

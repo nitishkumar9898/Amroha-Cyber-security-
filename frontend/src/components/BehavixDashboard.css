@@ -1,0 +1,71 @@
+.bx-container {
+  padding: 2rem;
+  color: #ff5555;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.bx-card {
+  background: rgba(255, 85, 85, 0.05);
+  border: 1px solid #ff5555;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.bx-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ff5555;
+  padding-bottom: 0.5rem;
+}
+
+.bx-card input {
+  background: transparent;
+  border: 1px solid #ff5555;
+  color: #ff5555;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.bx-card button {
+  background: #ff5555;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.bx-alert {
+  background: rgba(255, 0, 0, 0.2);
+  border-left: 4px solid #ff0000;
+}
+
+.bx-success {
+  background: rgba(0, 255, 0, 0.1);
+  border-left: 4px solid #00ff00;
+  color: #00ff00;
+  border-color: #00ff00;
+}
+
+.bx-success button {
+  background: #00ff00;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 85, 85, 0.2);
+}
+
+th {
+  color: #fff;
+}

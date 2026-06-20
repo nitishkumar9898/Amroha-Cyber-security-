@@ -1,0 +1,60 @@
+.am-container {
+  padding: 2rem;
+  color: #ff9933;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.am-card {
+  background: rgba(255, 153, 51, 0.05);
+  border: 1px solid #ff9933;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.am-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ff9933;
+  padding-bottom: 0.5rem;
+}
+
+.am-card input {
+  background: transparent;
+  border: 1px solid #ff9933;
+  color: #ff9933;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.am-card button {
+  background: #ff9933;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.high-deviation {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 153, 51, 0.2);
+}
+
+th {
+  color: #fff;
+}

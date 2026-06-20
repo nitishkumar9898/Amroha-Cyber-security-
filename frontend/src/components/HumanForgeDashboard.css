@@ -1,0 +1,141 @@
+.humanforge-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.hf-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.hf-header h1 {
+  font-size: 2.5rem;
+  color: #ff55aa; /* Pink/Purple theme for Psychology/Human focus */
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hf-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.hf-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.hf-form-group {
+  margin-bottom: 1rem;
+}
+
+.hf-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.hf-form-group input,
+.hf-form-group select,
+.hf-form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.hf-form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.hf-form-group textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.hf-btn {
+  background: #ff55aa;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.hf-btn:hover {
+  background: #ff77bb;
+}
+
+.hf-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.hf-alert {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Specific component styling */
+.hf-result-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #111;
+  text-align: left;
+}
+
+.hf-result-box.danger {
+  border-left: 4px solid #ff4444;
+}
+
+.hf-result-box.warning {
+  border-left: 4px solid #fca311;
+}
+
+.hf-result-box.nominal {
+  border-left: 4px solid #00ffcc;
+}
+
+.hf-result-box.info {
+  border-left: 4px solid #b721ff;
+}
+
+.hf-result-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}

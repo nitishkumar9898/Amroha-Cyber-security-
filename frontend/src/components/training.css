@@ -1,0 +1,62 @@
+/* training.css – premium glass‑morphism UI for the training arena */
+
+.training-arena {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, hsl(210, 30%, 15%), hsl(240, 30%, 10%));
+}
+
+.training-controls {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+.training-controls button {
+  background: rgba(0, 150, 255, 0.12);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin-right: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.training-controls button:hover {
+  background: rgba(0, 150, 255, 0.2);
+}
+
+.performance-hud {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.performance-hud .hud-item {
+  text-align: center;
+}
+
+.performance-hud .hud-label {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.performance-hud .hud-value {
+  font-weight: 600;
+  font-size: 1rem;
+}

@@ -1,0 +1,21 @@
+# config/compliance.yaml
+# Compliance engine configuration
+
+rules:
+  - name: ITAct2000_Section5
+    description: Evidence must be collected using approved forensic tools.
+    enabled: true
+  - name: DPDP2023_Consent
+    description: Personal data must have explicit consent.
+    enabled: true
+
+ledger:
+  type: file
+  path: "${APP_ROOT}/backend/app/compliance_engine/audit_log.jsonl"
+
+report:
+  template: "compliance_report.html"
+  output_format: "html"  # can also be pdf
+
+monitor:
+  enabled: true

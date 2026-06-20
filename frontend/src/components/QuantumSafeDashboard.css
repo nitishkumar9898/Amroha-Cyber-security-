@@ -1,0 +1,186 @@
+.quantum-safe-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.qs-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.qs-header h1 {
+  font-size: 2.5rem;
+  color: #a020f0; /* Purple for quantum theme */
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.qs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.qs-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.qs-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.qs-form-group {
+  margin-bottom: 1rem;
+}
+
+.qs-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.qs-form-group input,
+.qs-form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.qs-btn {
+  background: #a020f0;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.qs-btn:hover {
+  background: #b030ff;
+}
+
+.qs-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.qs-alert {
+  background: rgba(160, 32, 240, 0.1);
+  border: 1px solid rgba(160, 32, 240, 0.3);
+  color: #d080ff;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.qs-alert.error {
+  background: rgba(255, 68, 68, 0.1);
+  border-color: rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+}
+
+.qs-asset-card {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #555;
+}
+
+.qs-asset-card.safe {
+  border-left-color: #44ff44;
+}
+
+.qs-asset-card.vulnerable {
+  border-left-color: #ff4444;
+}
+
+.qs-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.qs-badge.safe {
+  background: rgba(68, 255, 68, 0.2);
+  color: #44ff44;
+}
+
+.qs-badge.vulnerable {
+  background: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+}
+
+.qs-sim-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #111;
+  border: 1px dashed #444;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.qs-sim-result .success {
+  color: #ff4444; /* Attack success is bad for defense */
+}
+
+.qs-sim-result .failure {
+  color: #44ff44; /* Attack failure is good for defense */
+}
+
+.qs-migration-strategy {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qs-arrow {
+  color: #888;
+  font-size: 1.5rem;
+}
+
+.qs-migration-box {
+  background: var(--bg-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  min-width: 120px;
+}
+
+.qs-migration-box.target {
+  border-color: #a020f0;
+  color: #d080ff;
+}

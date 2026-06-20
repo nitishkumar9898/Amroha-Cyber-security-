@@ -1,0 +1,70 @@
+.sg-container {
+  padding: 2rem;
+  color: #cc99ff;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sg-card {
+  background: rgba(204, 153, 255, 0.05);
+  border: 1px solid #cc99ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sg-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #cc99ff;
+  padding-bottom: 0.5rem;
+}
+
+.sg-card input {
+  background: transparent;
+  border: 1px solid #cc99ff;
+  color: #cc99ff;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.sg-card button {
+  background: #cc99ff;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sg-card button:disabled {
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.status-violated {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.status-compliant {
+  color: #00ff00;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(204, 153, 255, 0.2);
+}
+
+th {
+  color: #fff;
+}

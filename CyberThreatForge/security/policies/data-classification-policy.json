@@ -1,0 +1,47 @@
+{
+  "policyName": "Data Classification Policy — IT Act 2000 & DPDP Act 2023",
+  "version": "1.0.0",
+  "classifications": {
+    "CRITICAL": {
+      "description": "PII, biometric data, passwords, encryption keys, case evidence chain-of-custody",
+      "handling": {
+        "encryption": "AES-256-GCM at rest, TLS 1.3 in transit",
+        "access": "Strict RBAC — only assigned investigators and administrators",
+        "retention": "As per court order or case closure + 7 years",
+        "masking": "Full masking in logs and analytics"
+      }
+    },
+    "HIGH": {
+      "description": "Forensic evidence, device images, dark web intelligence, internal investigation reports",
+      "handling": {
+        "encryption": "AES-256-GCM at rest, TLS 1.3 in transit",
+        "access": "RBAC — assigned team members",
+        "retention": "Case closure + 5 years",
+        "masking": "Partial masking in audit logs"
+      }
+    },
+    "MEDIUM": {
+      "description": "User metadata (non-PII), operational logs, threat intel indicators (IOCs)",
+      "handling": {
+        "encryption": "AES-256 at rest, TLS 1.2+ in transit",
+        "access": "Role-based with approval for bulk export",
+        "retention": "3 years",
+        "masking": "No PII present"
+      }
+    },
+    "LOW": {
+      "description": "Public threat feeds, anonymized statistics, documentation",
+      "handling": {
+        "encryption": "TLS 1.2+ in transit",
+        "access": "Public or authenticated read",
+        "retention": "Indefinite",
+        "masking": "Not required"
+      }
+    }
+  },
+  "complianceFrameworks": [
+    "Information Technology Act, 2000 (India)",
+    "Digital Personal Data Protection Act, 2023 (India)",
+    "ISO/IEC 27001:2022"
+  ]
+}

@@ -1,0 +1,81 @@
+.cx-container {
+  padding: 2rem;
+  color: #00ccff;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cx-card {
+  background: rgba(0, 204, 255, 0.05);
+  border: 1px solid #00ccff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cx-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #00ccff;
+  padding-bottom: 0.5rem;
+}
+
+.cx-card input {
+  background: transparent;
+  border: 1px solid #00ccff;
+  color: #00ccff;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.cx-card button {
+  background: #00ccff;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cx-graph {
+  background: rgba(0, 204, 255, 0.15);
+  border-left: 4px solid #00ccff;
+}
+
+.graph-btn {
+  background: #00ccff;
+  color: #121212;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(0, 204, 255, 0.2);
+}
+
+th {
+  color: #fff;
+}
+
+.cx-nodes ul, .cx-links ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.cx-nodes li, .cx-links li {
+  background: rgba(0, 204, 255, 0.1);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}

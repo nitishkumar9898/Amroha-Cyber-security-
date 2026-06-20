@@ -1,0 +1,100 @@
+.btf-dashboard {
+  padding: 2rem;
+  background: linear-gradient(135deg, hsl(210, 30%, 12%), hsl(210, 30%, 8%));
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.btf-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #00ffd5;
+}
+
+.btf-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btf-tabs button {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 0.5rem;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btf-tabs button.active,
+.btf-tabs button:hover {
+  background: rgba(0, 255, 213, 0.2);
+  transform: translateY(-2px);
+}
+
+.btf-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.btf-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.btf-form input {
+  padding: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 0.3rem;
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.btf-submit {
+  padding: 0.75rem 1.5rem;
+  background: #00ffd5;
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btf-submit:hover {
+  background: #00e6b8;
+}
+
+.btf-results {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.btf-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 0.8rem;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btf-card h3 {
+  margin-top: 0;
+  color: #00ffd5;
+}
+
+.btf-card p {
+  margin: 0.3rem 0;
+}

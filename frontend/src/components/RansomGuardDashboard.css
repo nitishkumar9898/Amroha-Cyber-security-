@@ -1,0 +1,157 @@
+.ransom-guard-dashboard {
+  padding: 2rem;
+  color: #e0e0e0;
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.rg-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.rg-header h1 {
+  font-size: 2.5rem;
+  color: #ff4444;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rg-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.rg-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.rg-panel h2 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.rg-form-group {
+  margin-bottom: 1rem;
+}
+
+.rg-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #b0b0b0;
+}
+
+.rg-form-group input,
+.rg-form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.rg-form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.rg-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.rg-btn:hover {
+  background: #ff6666;
+}
+
+.rg-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.rg-alert {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.trace-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.trace-hop {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #44ff44;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trace-hop.high-risk {
+  border-left-color: #ff4444;
+}
+
+.hop-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hop-address {
+  font-family: monospace;
+  color: #44ccff;
+}
+
+.hop-amount {
+  font-weight: bold;
+  color: #44ff44;
+}
+
+.compliance-box {
+  margin-top: 2rem;
+  background: rgba(68, 255, 68, 0.05);
+  border: 1px solid rgba(68, 255, 68, 0.2);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.hash-string {
+  font-family: monospace;
+  word-break: break-all;
+  color: #44ccff;
+  background: rgba(0,0,0,0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}

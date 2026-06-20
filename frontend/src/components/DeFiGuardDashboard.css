@@ -1,0 +1,74 @@
+.dg-container {
+  padding: 2rem;
+  color: #ffcc00;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dg-card {
+  background: rgba(255, 204, 0, 0.05);
+  border: 1px solid #ffcc00;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dg-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ffcc00;
+  padding-bottom: 0.5rem;
+}
+
+.dg-card input {
+  background: transparent;
+  border: 1px solid #ffcc00;
+  color: #ffcc00;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.dg-card button {
+  background: #ffcc00;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dg-trace {
+  background: rgba(255, 204, 0, 0.15);
+  border-left: 4px solid #ffcc00;
+}
+
+.high-risk {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.trace-btn {
+  background: #ffcc00;
+  color: #121212;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+}
+
+th {
+  color: #fff;
+}

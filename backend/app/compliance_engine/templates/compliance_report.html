@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compliance Report</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 2rem;}
+        h1 {color: #2c3e50;}
+        table {border-collapse: collapse; width: 100%; margin-top: 1rem;}
+        th, td {border: 1px solid #ddd; padding: 0.5rem; text-align: left;}
+        th {background-color: #f4f4f4;}
+    </style>
+</head>
+<body>
+    <h1>Compliance Evaluation Report</h1>
+    <p>Generated on {{ generated_at }}</p>
+    <h2>Rule Results</h2>
+    <table>
+        <thead>
+            <tr><th>Rule</th><th>Passed</th></tr>
+        </thead>
+        <tbody>
+            {% for rule, result in results.items() %}
+            <tr><td>{{ rule }}</td><td>{{ result }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

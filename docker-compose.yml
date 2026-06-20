@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - QUANTUM_SAFE_MODE=true
+    volumes:
+      - ./backend:/workspace
+      - ./forensic_evidence:/workspace/forensic_evidence
+    depends_on:
+      - neo4j
+
+  sentinel_core:
+    build:
+      context: ./ai_layer
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./ai_layer:/app
+
+  neo4j:
+    image: neo4j:enterprise
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/cyberthreatforge2026
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - gateway
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./chromadb_data:/chroma/chroma
+
+  malware_sandbox:
+    build:
+      context: ./sandbox
+      dockerfile: Dockerfile
+    # Isolated network context: No exposed ports, minimal privileges
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

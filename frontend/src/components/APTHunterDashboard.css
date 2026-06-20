@@ -1,0 +1,133 @@
+.apthunter-dashboard {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-light, #f1f5f9);
+}
+
+.apthunter-header {
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  padding-bottom: 16px;
+}
+
+.apthunter-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent-cyan, #38bdf8);
+  margin: 0 0 8px 0;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.apthunter-header p {
+  color: #94a3b8;
+  margin: 0;
+  font-size: 16px;
+}
+
+.apthunter-controls {
+  margin-bottom: 32px;
+}
+
+.scan-btn {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(14, 165, 233, 0.1) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+.scan-btn:hover:not(:disabled) {
+  background: rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  transform: translateY(-1px);
+}
+
+.scan-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.apthunter-error {
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid #ef4444;
+  padding: 16px;
+  border-radius: 4px;
+  color: #fca5a5;
+  margin-bottom: 24px;
+}
+
+.apthunter-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+}
+
+.apthunter-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.apthunter-card h3 {
+  margin: 0 0 20px 0;
+  color: #e2e8f0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apthunter-card h3::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.attribution-details p {
+  margin: 12px 0;
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+.attribution-details .highlight {
+  color: #ec4899;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.confidence-bar {
+  margin-top: 16px;
+  height: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+}
+
+@media (max-width: 768px) {
+  .apthunter-results-grid {
+    grid-template-columns: 1fr;
+  }
+}

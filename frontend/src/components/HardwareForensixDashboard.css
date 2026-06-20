@@ -1,0 +1,99 @@
+.hf-dashboard-container {
+  padding: 2rem;
+  background: radial-gradient(circle at center, #1a202c 0%, #000000 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.hf-title {
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hf-upload-zone {
+  border: 2px dashed #4b5563;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 2rem;
+}
+
+.hf-file-input {
+  margin-right: 1rem;
+}
+
+.hf-btn {
+  background: #fbbf24;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.hf-btn:hover:not(:disabled) {
+  background: #f59e0b;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+.hf-btn:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+}
+
+.hf-btn-detonate {
+  background: #ef4444;
+  color: white;
+  margin-top: 1rem;
+}
+
+.hf-btn-detonate:hover {
+  background: #dc2626;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.hf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.hf-card {
+  background: #111827;
+  border: 1px solid #374151;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.hf-card h2 {
+  color: #9ca3af;
+  margin-top: 0;
+}
+
+.hf-pre {
+  background: #000;
+  color: #34d399;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.hf-results p {
+  margin: 0.5rem 0;
+}
+
+.hf-status {
+  background: rgba(251, 191, 36, 0.1);
+  border-left: 4px solid #fbbf24;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}

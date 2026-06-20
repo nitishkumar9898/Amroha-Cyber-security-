@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ctf-edge-agent
+  namespace: cyberthreatforge
+  labels:
+    app: ctf-edge-agent
+    component: edge
+spec:
+  selector:
+    matchLabels:
+      app: ctf-edge-agent
+  template:
+    metadata:
+      labels:
+        app: ctf-edge-agent
+    spec:
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - name: agent
+        image: ghcr.io/cyberthreatforge/edge-agent:latest
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["NET_ADMIN", "SYS_ADMIN", "SYS_PTRACE"]
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: SENTINEL_CORE_URL
+          value: "https://sentinel-core.cyberthreatforge.svc.cluster.local"
+        - name: EDGE_MODE
+          value: "full"
+        volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
+          readOnly: true
+        - name: host-fs
+          mountPath: /host
+          readOnly: true
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+      volumes:
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
+      - name: host-fs
+        hostPath:
+          path: /
+          type: Directory
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ctf-edge-sa
+  namespace: cyberthreatforge
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ctf-edge-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "nodes", "services", "endpoints"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources: ["daemonsets", "deployments"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ctf-edge-binding
+subjects:
+- kind: ServiceAccount
+  name: ctf-edge-sa
+  namespace: cyberthreatforge
+roleRef:
+  kind: ClusterRole
+  name: ctf-edge-role
+  apiGroup: rbac.authorization.k8s.io

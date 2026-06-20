@@ -1,0 +1,18 @@
+ingestion:
+  project_id: "my-gcp-project"
+  topics:
+    device: "dataforge-device"
+    log: "dataforge-log"
+    darkweb: "dataforge-darkweb"
+    public: "dataforge-public"
+
+privacy:
+  epsilon: 1.0
+  k_anonymity: 5
+  l_diversity: 2
+
+pipeline:
+  bigquery_dataset: "dataforge"
+  bigquery_table: "sanitized_events"
+  gcs_bucket: "gs://dataforge/raw_sanitized/"
+  enable_gcs_backup: true

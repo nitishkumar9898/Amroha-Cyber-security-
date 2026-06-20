@@ -1,0 +1,62 @@
+.md-container {
+  padding: 2rem;
+  color: #00ffcc;
+  background-color: #121212;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.md-card {
+  background: rgba(0, 255, 204, 0.05);
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.md-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #00ffcc;
+  padding-bottom: 0.5rem;
+}
+
+.md-card input {
+  background: transparent;
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.md-card button {
+  background: #00ffcc;
+  color: #121212;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.md-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 255, 204, 0.1);
+  border-left: 4px solid #00ffcc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+th {
+  color: #fff;
+}

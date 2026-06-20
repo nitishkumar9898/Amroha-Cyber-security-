@@ -1,0 +1,216 @@
+# =============================================================================
+# CyberThreatForge Helm Values
+# =============================================================================
+# Override these for your environment. Never commit secrets.
+
+global:
+  environment: production
+  region: ap-south-1
+
+# ── Backend ──────────────────────────────────────────────────────────────────
+
+backend:
+  replicaCount: 3
+  image:
+    repository: ghcr.io/cyberthreatforge/backend
+    tag: latest
+    pullPolicy: Always
+  service:
+    port: 3000
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 20
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+  env:
+    NODE_ENV: "production"
+    API_PREFIX: "/api/v1"
+    LOG_LEVEL: "info"
+    METRICS_ENABLED: "true"
+
+# ── Frontend ─────────────────────────────────────────────────────────────────
+
+frontend:
+  replicaCount: 2
+  image:
+    repository: ghcr.io/cyberthreatforge/frontend
+    tag: latest
+    pullPolicy: Always
+  service:
+    port: 80
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+
+# ── AI Layer ─────────────────────────────────────────────────────────────────
+
+aiLayer:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: ghcr.io/cyberthreatforge/ai-layer
+    tag: latest
+  resources:
+    requests:
+      memory: "4Gi"
+      cpu: "2"
+      nvidia.com/gpu: 1
+    limits:
+      memory: "16Gi"
+      cpu: "8"
+      nvidia.com/gpu: 1
+  nodeSelector:
+    workload: ai
+
+# ── Edge Agents ──────────────────────────────────────────────────────────────
+
+edgeAgents:
+  enabled: true
+  image:
+    repository: ghcr.io/cyberthreatforge/edge-agent
+    tag: latest
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "1"
+    limits:
+      memory: "4Gi"
+      cpu: "2"
+
+# ── Databases ────────────────────────────────────────────────────────────────
+
+postgresql:
+  enabled: true
+  auth:
+    database: cyberthreatforge
+    username: ctf_admin
+  primary:
+    persistence:
+      size: 200Gi
+    resources:
+      requests:
+        memory: "4Gi"
+        cpu: "2"
+      limits:
+        memory: "8Gi"
+        cpu: "4"
+
+neo4j:
+  enabled: true
+  acceptLicenseAgreement: "yes"
+  core:
+    numberOfServers: 3
+    resources:
+      requests:
+        memory: "8Gi"
+        cpu: "4"
+  config:
+    dbms.memory.heap.initial_size: "4G"
+    dbms.memory.heap.max_size: "8G"
+    dbms.memory.pagecache.size: "4G"
+
+redis:
+  enabled: true
+  architecture: replication
+  auth:
+    enabled: true
+  replica:
+    replicaCount: 2
+
+minio:
+  enabled: true
+  replicas: 4
+  persistence:
+    size: 500Gi
+  buckets:
+    - name: ctf-evidence
+    - name: ctf-logs
+    - name: ctf-backups
+
+# ── Streaming ────────────────────────────────────────────────────────────────
+
+kafka:
+  enabled: true
+  replicaCount: 3
+  persistence:
+    size: 100Gi
+  provisioning:
+    topics:
+      - name: ctf-events
+        partitions: 12
+        replicationFactor: 3
+      - name: ctf-evidence
+        partitions: 24
+        replicationFactor: 3
+      - name: ctf-alerts
+        partitions: 6
+        replicationFactor: 3
+
+# ── Monitoring ───────────────────────────────────────────────────────────────
+
+monitoring:
+  enabled: true
+  prometheus:
+    enabled: true
+    retentionDays: 30
+  grafana:
+    enabled: true
+    adminPassword: ""  # Override with secret
+  sentry:
+    enabled: false
+    dsn: ""
+
+# ── Security ─────────────────────────────────────────────────────────────────
+
+security:
+  networkPolicy:
+    enabled: true
+    ingressAllowFrom:
+      - namespace: istio-system
+  podSecurityPolicy:
+    enabled: true
+  tls:
+    enabled: true
+    issuer:
+      name: letsencrypt-prod
+      kind: ClusterIssuer
+    wildcardDomain: "*.cyberthreatforge.io"
+
+# ── Ingress ──────────────────────────────────────────────────────────────────
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "2g"
+  hosts:
+    - host: ctf.example.com
+      paths:
+        - path: /api
+          pathType: Prefix
+          serviceName: backend
+          servicePort: 3000
+        - path: /
+          pathType: Prefix
+          serviceName: frontend
+          servicePort: 80

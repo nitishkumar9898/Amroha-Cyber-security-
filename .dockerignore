@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.db
+*.sqlite
+.venv/
+venv/
+forensic_evidence/
+.git/
+.github/
+k8s-deployment.yml
+prometheus.yml
+docker-compose.yml
+test_backend.py
+seed_db.py
+run_local.py

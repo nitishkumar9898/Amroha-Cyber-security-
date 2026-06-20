@@ -1,0 +1,77 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosExperiment
+metadata:
+  name: ctf-pod-failure
+  namespace: cyberthreatforge
+spec:
+  definition:
+    scope: Namespaced
+    permissions:
+      - apiGroups: ["", "apps", "batch"]
+        resources: ["pods", "deployments"]
+        verbs: ["create", "delete", "list", "patch"]
+    experiments:
+      - name: pod-delete
+        spec:
+          components:
+            env:
+              - name: TOTAL_CHAOS_DURATION
+                value: "60"
+              - name: CHAOS_INTERVAL
+                value: "10"
+              - name: TARGET_PODS
+                value: "backend"
+              - name: PODS_AFFECTED_PERC
+                value: "33"
+          probe:
+            - name: "backend-health-check"
+              type: httpProbe
+              httpProbe/inputs:
+                url: "http://backend:3000/api/v1/health"
+                expectedStatusCode: 200
+                method: GET
+              mode: Continuous
+              runProperties:
+                probeTimeout: 5
+                interval: 5
+                retry: 3
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosExperiment
+metadata:
+  name: ctf-db-stress
+  namespace: cyberthreatforge
+spec:
+  definition:
+    experiments:
+      - name: pod-cpu-hog
+        spec:
+          components:
+            env:
+              - name: TARGET_PODS
+                value: "postgresql-0"
+              - name: CPU_CORES
+                value: "2"
+              - name: TOTAL_CHAOS_DURATION
+                value: "30"
+              - name: TARGET_CONTAINER
+                value: "postgresql"
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosExperiment
+metadata:
+  name: ctf-network-partition
+  namespace: cyberthreatforge
+spec:
+  definition:
+    experiments:
+      - name: pod-network-partition
+        spec:
+          components:
+            env:
+              - name: TARGET_PODS
+                value: "neo4j-core-0"
+              - name: TOTAL_CHAOS_DURATION
+                value: "20"
+              - name: EGRESS_TRAFFIC_BLOCK
+                value: "true"
